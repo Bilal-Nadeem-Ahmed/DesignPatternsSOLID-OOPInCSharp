@@ -1,10 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Abstraction;
+using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Coupling;
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Encapsulation;
 //using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Inheritance;
 
 //using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Inheritance;
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Polymorphism;
+using Microsoft.Extensions.DependencyInjection;
+
+
 
 //Console.WriteLine("Hello, World!");
 //BadBankAccount badBankAccount = new ();
@@ -26,22 +30,38 @@ using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Polymorphism;
 //// unique
 //car.NumberOfDoors = 4;
 
-var vehicles = new List<Vehicle>();
+//var vehicles = new List<Vehicle>();
 
-Car car = new Car { Brand = "Toyota", Model ="Civic", Year = 1994};
-Plane plane = new Plane();
-Motorcycle motorcycle = new Motorcycle{Brand="Honda", Model="CBR1000", Year=2010};
-vehicles.Add(car);
-vehicles.Add(plane);
-vehicles.Add(motorcycle);
-//vehicle inspection
+//Car car = new Car { Brand = "Toyota", Model ="Civic", Year = 1994};
+//Plane plane = new Plane();
+//Motorcycle motorcycle = new Motorcycle{Brand="Honda", Model="CBR1000", Year=2010};
+//vehicles.Add(car);
+//vehicles.Add(plane);
+//vehicles.Add(motorcycle);
+////vehicle inspection
 
-foreach (var vehicle in vehicles)
-{
-    vehicle.Start();
-}
+//foreach (var vehicle in vehicles)
+//{
+//    vehicle.Start();
+//}
 
 // above we are treating the objects in the same way even though they are in different forms
+
+// this is the example of coupling below
+
+//var services = new ServiceCollection();
+
+//services.AddScoped<INotificationService, SmsSender>();
+//// can use the email service instead above
+//services.AddScoped<IOrder, Order>();
+
+//var serviceProvider = services.BuildServiceProvider();
+
+//var OrderService = serviceProvider.GetService<IOrder>();
+
+
+//OrderService.PlaceOrder();
+//Console.ReadLine();
 
 
 
