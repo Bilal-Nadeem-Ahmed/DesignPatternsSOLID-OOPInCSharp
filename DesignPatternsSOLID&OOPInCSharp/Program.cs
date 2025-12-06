@@ -63,5 +63,47 @@ using Microsoft.Extensions.DependencyInjection;
 //OrderService.PlaceOrder();
 //Console.ReadLine();
 
+//var rectangle = new DesignPatternsSOLID_OOPInCSharp.SOLID.L.Bad.Rectangle();
+//rectangle.Width = 5;
+//rectangle.Height = 10;
+//Console.WriteLine("Area Should Be 50");
+//Console.WriteLine($"Rectangle Area: {rectangle.Area}");
+//var squareBad = new DesignPatternsSOLID_OOPInCSharp.SOLID.L.Bad.Square();
+//squareBad.Width = 5;
+//Console.WriteLine($"Square Area: {squareBad.Area}");
+// this will print 25 instead of 50
+// because setting the width also sets the height
+// violating the Liskov Substitution Principle
+// because a square is not a rectangle
+// in terms of behavior
+// even though it is a rectangle in terms of shape
+// this is a classic example of LSP violation
+// to fix this we can create a separate class for Square
+// that does not inherit from Rectangle
+// or we can use composition instead of inheritance
+// to model the relationship between Square and Rectangle
+// thus adhering to LSP
 
+//var squareGood = new DesignPatternsSOLID_OOPInCSharp.SOLID.L.Good.Square();
+//squareGood.SideLength = 5;
+//Console.WriteLine("Area Should Be 25");
+//Console.WriteLine($"Square Area: {squareGood.Area}");
+
+// this adheres to LSP
+// because Square does not inherit from Rectangle
+// thus we can use both classes interchangeably
+// without any unexpected behavior
+// even though they are both shapes
+// they have different implementations for calculating areal
+
+// examples for Interface Segregation Principle
+
+var circleBad = new DesignPatternsSOLID_OOPInCSharp.SOLID.I.Bad.CircleBad();
+circleBad.Radius = 5;
+Console.WriteLine("Area Should Be 78.54");
+Console.WriteLine($"Circle Area: {circleBad.Area()}");
+// the following line will throw an exception
+// because CircleBad does not support Volume method
+
+//Console.WriteLine($"Circle Volume: {circleBad.Volume()}");
 
