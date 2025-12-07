@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DesignPatterns\Creational\" />
+    <Folder Include="DesignPatterns\Structural\" />
+  </ItemGroup>
+
 </Project>

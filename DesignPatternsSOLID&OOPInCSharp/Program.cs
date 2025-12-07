@@ -98,12 +98,33 @@ using Microsoft.Extensions.DependencyInjection;
 
 // examples for Interface Segregation Principle
 
-var circleBad = new DesignPatternsSOLID_OOPInCSharp.SOLID.I.Bad.CircleBad();
-circleBad.Radius = 5;
-Console.WriteLine("Area Should Be 78.54");
-Console.WriteLine($"Circle Area: {circleBad.Area()}");
+//var circleBad = new DesignPatternsSOLID_OOPInCSharp.SOLID.I.Bad.CircleBad();
+//circleBad.Radius = 5;
+//Console.WriteLine("Area Should Be 78.54");
+//Console.WriteLine($"Circle Area: {circleBad.Area()}");
 // the following line will throw an exception
 // because CircleBad does not support Volume method
 
 //Console.WriteLine($"Circle Volume: {circleBad.Volume()}");
 
+///////////////////////////////////////////////////////////////
+/////DesignPatternsExamples////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+// Behavioral Design Pattern - Momento Pattern Example
+
+var editor = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.Editor();
+var history = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.History(editor);
+history.Backup();
+editor.Title = "Title1";
+
+history.Backup();
+
+editor.Content = "Content2";
+history.Backup();
+editor.Title = "Hello";
+
+Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
+history.Undo();
+Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
+history.ShowHistory();
