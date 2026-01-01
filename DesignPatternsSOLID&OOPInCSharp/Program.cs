@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.State;
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Abstraction;
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Coupling;
 using DesignPatternsSOLID_OOPInCSharp.OopPrinciples.Encapsulation;
@@ -113,18 +114,38 @@ using Microsoft.Extensions.DependencyInjection;
 
 // Behavioral Design Pattern - Momento Pattern Example
 
-var editor = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.Editor();
-var history = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.History(editor);
-history.Backup();
-editor.Title = "Title1";
+//var editor = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.Editor();
+//var history = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.Momento.History(editor);
+//history.Backup();
+//editor.Title = "Title1";
 
-history.Backup();
+//history.Backup();
 
-editor.Content = "Content2";
-history.Backup();
-editor.Title = "Hello";
+//editor.Content = "Content2";
+//history.Backup();
+//editor.Title = "Hello";
 
-Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
-history.Undo();
-Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
-history.ShowHistory();
+//Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
+//history.Undo();
+//Console.WriteLine($"Title: {editor.Title}, Content: {editor.Content}");
+//history.ShowHistory();
+
+// state pattern example bad
+//var document = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.State.Document();
+//document.State = DocumentStatuesEnum.Moderation;
+//document.CurrentUserRole = UserRoles.Admin;
+//Console.WriteLine($"{document.State}");
+//document.Publish();
+
+// state pattern example good
+var document = new DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.State.GoodExample.Document((DesignPatternsSOLID_OOPInCSharp.DesignPatterns.Behavioural.State.GoodExample.UserRoles)UserRoles.Admin);
+// if above is admin the two calls to publish will publish the document
+// if its editor only the first call will move it to moderation
+Console.WriteLine(document.State);
+document.Publish();
+Console.WriteLine(document.State);
+document.Publish();
+Console.WriteLine(document.State);
+
+
+
